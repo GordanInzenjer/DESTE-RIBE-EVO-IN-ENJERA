@@ -19,12 +19,25 @@ namespace Zadaća_2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int sum1 = 0;
+            int sum2 = 0;
+            int sum3 = 0;
+
             for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 int val1 = Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
                 int val2 = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
                 dataGridView1.Rows[i].Cells[3].Value = val1 + val2;
+                sum1 += Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
+                sum2 += Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value);
+                sum3 += Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
             }
+            dataGridView1.Rows[dataGridView1.Rows.Count-1].Cells[1].Value = sum1;
+            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[2].Value = sum2;
+            dataGridView1.Rows[dataGridView1.Rows.Count - 1].Cells[3].Value = sum3;
+
+
+
 
         }
 
@@ -35,7 +48,7 @@ namespace Zadaća_2
                 var x = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].EditedFormattedValue.ToString();
               
 
-                if (x.Length == 0)
+                if (x.Length == 0 || String.IsNullOrWhiteSpace(x))
                 {
                     MessageBox.Show("Unesi ime!");
                     e.Cancel = true;
@@ -64,6 +77,7 @@ namespace Zadaća_2
         }
     }
 }
+
 
 
  
